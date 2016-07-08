@@ -183,6 +183,8 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     self.showLoadEarlierMessagesHeader = NO;
 
+    self.accessoryButtonMode = JSQMessagesAccessoryButtonModeAlwaysHidden;
+
     self.topContentAdditionalInset = 0.0f;
 
     [self jsq_updateCollectionViewInsets];
@@ -561,6 +563,8 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
         }
     }
 
+    cell.accessoryButton.hidden = [self shouldHideAccessoryButtonInCellWithMediaMessage:isMediaMessage];
+    
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellBottomLabelAtIndexPath:indexPath];
@@ -582,6 +586,13 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [self collectionView:collectionView accessibilityForCell:cell indexPath:indexPath message:messageItem];
 
     return cell;
+}
+
+- (BOOL)shouldHideAccessoryButtonInCellWithMediaMessage:(BOOL)isMediaMessage
+{
+    JSQMessagesAccessoryButtonMode mask =
+            isMediaMessage ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeVisibleForTextMessages;
+    return self.accessoryButtonMode & mask ? NO : YES;
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
