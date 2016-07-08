@@ -23,6 +23,7 @@
 #import "JSQMessagesCollectionViewLayoutAttributes.h"
 
 #import "UIView+JSQMessages.h"
+#import "UIImage+JSQMessages.h"
 
 
 static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
@@ -40,6 +41,8 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UIView *avatarContainerView;
+
+@property (weak, nonatomic) IBOutlet UIButton *accessoryButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *messageBubbleContainerWidthConstraint;
 
@@ -126,9 +129,18 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
     self.cellBottomLabel.font = [UIFont systemFontOfSize:11.0f];
     self.cellBottomLabel.textColor = [UIColor lightGrayColor];
 
+    [self configureAccessoryButton];
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(jsq_handleTapGesture:)];
     [self addGestureRecognizer:tap];
     self.tapGestureRecognizer = tap;
+}
+
+- (void)configureAccessoryButton
+{
+    UIColor *tintColor = [UIColor lightGrayColor];
+    UIImage *accessoryActionImage = [[UIImage jsq_shareActionImage] jsq_imageMaskedWithColor:tintColor];
+    [self.accessoryButton setImage:accessoryActionImage forState:UIControlStateNormal];
 }
 
 - (void)dealloc
