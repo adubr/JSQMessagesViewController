@@ -678,6 +678,11 @@
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
 }
 
+- (void)collectionView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path
+{
+    NSLog(@"Tapped accessory button!");
+}
+
 #pragma mark - JSQMessagesComposerTextViewPasteDelegate methods
 
 

@@ -74,6 +74,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)messagesCollectionViewCell:(JSQMessagesCollectionViewCell *)cell didPerformAction:(SEL)action withSender:(id)sender;
 
+/**
+ *  Tells the delegate that the accessory button of the cell has been tapped.
+ *
+ *  @param cell The cell that the accessory button belongs to.
+ */
+- (void)messagesCollectionViewCellDidTapAccessoryButton:(JSQMessagesCollectionViewCell *)cell;
+
 @end
 
 

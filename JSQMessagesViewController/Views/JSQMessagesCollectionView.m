@@ -18,7 +18,6 @@
 
 #import "JSQMessagesCollectionView.h"
 
-#import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesCollectionViewCellIncoming.h"
 #import "JSQMessagesCollectionViewCellOutgoing.h"
 
@@ -26,6 +25,7 @@
 #import "JSQMessagesLoadEarlierHeaderView.h"
 
 #import "UIColor+JSQMessages.h"
+#import "JSQMessagesCollectionViewAccessoryDelegate.h"
 
 
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>
@@ -181,6 +181,16 @@ forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                     performAction:action
                forItemAtIndexPath:indexPath
                        withSender:sender];
+}
+
+- (void)messagesCollectionViewCellDidTapAccessoryButton:(JSQMessagesCollectionViewCell *)cell
+{
+    NSIndexPath *indexPath = [self indexPathForCell:cell];
+    if (indexPath == nil) {
+        return;
+    }
+
+    [self.accessoryDelegate collectionView:self didTapAccessoryButtonAtIndexPath:indexPath];
 }
 
 @end

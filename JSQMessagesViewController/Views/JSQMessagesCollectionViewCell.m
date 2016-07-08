@@ -373,7 +373,7 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
     constraint.constant = constant;
 }
 
-#pragma mark - Gesture recognizers
+#pragma mark - User interaction handlers
 
 - (void)jsq_handleTapGesture:(UITapGestureRecognizer *)tap
 {
@@ -399,6 +399,11 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
     }
     
     return NO;
+}
+
+- (IBAction)didTapAccessoryButton:(UIButton *)accessoryButton
+{
+    [self.delegate messagesCollectionViewCellDidTapAccessoryButton:self];
 }
 
 @end

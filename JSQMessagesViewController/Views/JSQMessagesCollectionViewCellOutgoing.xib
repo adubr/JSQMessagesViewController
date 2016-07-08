@@ -93,6 +93,9 @@
                             <constraint firstAttribute="width" constant="19" placeholder="YES" id="J3j-ZO-4ds"/>
                             <constraint firstAttribute="height" constant="27" placeholder="YES" id="SWo-od-s3h"/>
                         </constraints>
+                        <connections>
+                            <action selector="didTapAccessoryButton:" destination="23f-xH-rkY" eventType="touchUpInside" id="Hxk-1U-a8W"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
