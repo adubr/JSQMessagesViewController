@@ -23,6 +23,7 @@
 #import "JSQMessageData.h"
 #import "JSQMessageBubbleImageDataSource.h"
 #import "JSQMessageAvatarImageDataSource.h"
+#import "JSQMessagesViewAccessoryButtonConfiguration.h"
 
 #import "JSQMessagesCollectionViewCellIncoming.h"
 #import "JSQMessagesCollectionViewCellOutgoing.h"
@@ -176,7 +177,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     self.showLoadEarlierMessagesHeader = NO;
 
-    self.accessoryButtonMode = JSQMessagesAccessoryButtonModeAlwaysHidden;
+    self.accessoryButtonConfiguration = [[JSQMessagesViewAccessoryButtonConfiguration alloc] init];
 
     self.topContentAdditionalInset = 0.0f;
 
@@ -585,7 +586,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 {
     JSQMessagesAccessoryButtonMode mask =
             isMediaMessage ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeVisibleForTextMessages;
-    return self.accessoryButtonMode & mask ? NO : YES;
+    return self.accessoryButtonConfiguration.mode & mask ? NO : YES;
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView

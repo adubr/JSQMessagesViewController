@@ -25,7 +25,7 @@
 #import "JSQMessagesLoadEarlierHeaderView.h"
 
 #import "UIColor+JSQMessages.h"
-#import "JSQMessagesViewAccessoryDelegate.h"
+#import "JSQMessagesViewAccessoryButtonDelegate.h"
 
 
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>

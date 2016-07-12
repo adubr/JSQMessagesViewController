@@ -17,9 +17,10 @@
 //
 
 #import "DemoMessagesViewController.h"
-#import "JSQMessagesViewAccessoryDelegate.h"
+#import "JSQMessagesViewAccessoryButtonDelegate.h"
+#import "JSQMessagesViewAccessoryButtonConfiguration.h"
 
-@interface DemoMessagesViewController () <JSQMessagesViewAccessoryDelegate>
+@interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate>
 @end
 
 @implementation DemoMessagesViewController
@@ -50,12 +51,9 @@
     
 
     /**
-     *  Set up message accessory button delegate and behaviour
+     *  Set up message accessory button delegate and configuration
      */
-
-    self.collectionView.accessoryDelegate = self;
-    self.accessoryButtonMode =
-            [NSUserDefaults accessoryButtonForMediaMessages] ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeAlwaysHidden;
+    [self setupMessageAccessoryButton];
 
     /**
      *  You can set custom avatar sizes
@@ -98,6 +96,16 @@
      *
      *  self.inputToolbar.maximumHeight = 150;
      */
+}
+
+- (void)setupMessageAccessoryButton
+{
+    self.collectionView.accessoryDelegate = self;
+    JSQMessagesViewAccessoryButtonConfiguration *accessoryButtonConfiguration
+            = [[JSQMessagesViewAccessoryButtonConfiguration alloc] init];
+    accessoryButtonConfiguration.mode =
+            [NSUserDefaults accessoryButtonForMediaMessages] ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeAlwaysHidden;
+    self.accessoryButtonConfiguration = accessoryButtonConfiguration;
 }
 
 - (void)viewWillAppear:(BOOL)animated

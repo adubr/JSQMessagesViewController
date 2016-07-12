@@ -22,21 +22,9 @@
 #import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesInputToolbar.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@class JSQMessagesViewAccessoryButtonConfiguration;
 
-/**
- *  Constants describing rules for the accessory button visibility
- */
-typedef NS_OPTIONS(NSInteger, JSQMessagesAccessoryButtonMode) {
-    /** The accessory button is hidden in all cells. This is the default value. */
-    JSQMessagesAccessoryButtonModeAlwaysHidden            = 0,
-    /** The accessory button is visible for all cells with media messages. */
-    JSQMessagesAccessoryButtonModeVisibleForMediaMessages = 1 << 0,
-    /** The accessory button is visible for all cells with text messages. */
-    JSQMessagesAccessoryButtonModeVisibleForTextMessages  = 1 << 1,
-    /** The accessory button is visible in all cells. */
-    JSQMessagesAccessoryButtonModeAlwaysVisible           = 1 << 2,
-};
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The `JSQMessagesViewController` class is an abstract class that represents a view controller whose content consists of
@@ -160,13 +148,12 @@ typedef NS_OPTIONS(NSInteger, JSQMessagesAccessoryButtonMode) {
 @property (assign, nonatomic) BOOL showLoadEarlierMessagesHeader;
 
 /**
- *  Specifies when the accessory button should be visible.
+ *  Specifies the accessory button configuration.
  *
- *  @discussion See JSQMessagesAccessoryButtonMode for possible values.
- *  Changing the mode won't take effect immediately.
- *  The accessory button can be shown/hidden in `collectionView:cellForItemAtIndexPath:` manually.
+ *  @discussion You may provide an image for the button and specify the visibility mode.
+ *  Changing the configuration won't take effect immediately.
  */
-@property (assign, nonatomic) JSQMessagesAccessoryButtonMode accessoryButtonMode;
+@property (strong, nonatomic) JSQMessagesViewAccessoryButtonConfiguration *accessoryButtonConfiguration;
 
 /**
  *  Specifies an additional inset amount to be added to the collectionView's contentInsets.top value.
