@@ -557,6 +557,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
         }
     }
 
+    [cell setAccessoryButtonImage:self.accessoryButtonConfiguration.image];
     cell.accessoryButton.hidden = [self shouldHideAccessoryButtonInCellWithMediaMessage:isMediaMessage];
     
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];

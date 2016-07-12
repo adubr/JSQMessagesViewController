@@ -164,9 +164,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic, readonly, nullable) UIView *avatarContainerView;
 
 /**
- *  Returns the accessory button of the cell
+ *  Returns the accessory button of the cell.
  */
 @property (weak, nonatomic, readonly, nullable) UIButton *accessoryButton;
+
+/**
+ *  Sets an image for the accessory button of the cell.
+ */
+- (void)setAccessoryButtonImage:(UIImage *)image;
 
 /**
  *  The media view of the cell. This view displays the contents of a media message.

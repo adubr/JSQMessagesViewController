@@ -16,7 +16,7 @@
 //
 
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,6 +44,11 @@ typedef NS_OPTIONS(NSInteger, JSQMessagesAccessoryButtonMode) {
  *  The accessory button can be shown/hidden in `collectionView:cellForItemAtIndexPath:` manually.
  */
 @property (assign, nonatomic) JSQMessagesAccessoryButtonMode mode;
+
+/**
+ *  An image to be used for the message accessory button
+ */
+ @property (strong, nonatomic) UIImage *image;
 
 @end
 
