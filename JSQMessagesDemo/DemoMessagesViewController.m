@@ -50,10 +50,12 @@
     
 
     /**
-     *  Set up message accessory button delegate
+     *  Set up message accessory button delegate and behaviour
      */
 
     self.collectionView.accessoryDelegate = self;
+    self.accessoryButtonMode =
+            [NSUserDefaults accessoryButtonForMediaMessages] ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeAlwaysHidden;
 
     /**
      *  You can set custom avatar sizes
