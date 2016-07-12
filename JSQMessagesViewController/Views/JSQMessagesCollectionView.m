@@ -25,7 +25,7 @@
 #import "JSQMessagesLoadEarlierHeaderView.h"
 
 #import "UIColor+JSQMessages.h"
-#import "JSQMessagesCollectionViewAccessoryDelegate.h"
+#import "JSQMessagesViewAccessoryDelegate.h"
 
 
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>
@@ -190,7 +190,7 @@ forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
         return;
     }
 
-    [self.accessoryDelegate collectionView:self didTapAccessoryButtonAtIndexPath:indexPath];
+    [self.accessoryDelegate messageView:self didTapAccessoryButtonAtIndexPath:indexPath];
 }
 
 @end

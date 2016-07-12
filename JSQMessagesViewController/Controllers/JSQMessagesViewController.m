@@ -30,15 +30,8 @@
 #import "JSQMessagesTypingIndicatorFooterView.h"
 #import "JSQMessagesLoadEarlierHeaderView.h"
 
-#import "JSQMessagesToolbarContentView.h"
-#import "JSQMessagesInputToolbar.h"
-#import "JSQMessagesComposerTextView.h"
-
 #import "NSString+JSQMessages.h"
-#import "UIColor+JSQMessages.h"
 #import "NSBundle+JSQMessages.h"
-
-#import <MobileCoreServices/UTCoreTypes.h>
 
 #import <objc/runtime.h>
 
@@ -161,7 +154,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.accessoryDelegate = self;
 
     self.inputToolbar.delegate = self;
     self.inputToolbar.contentView.textView.placeHolder = [NSBundle jsq_localizedStringForKey:@"new_message"];
@@ -742,8 +734,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView
  didTapCellAtIndexPath:(NSIndexPath *)indexPath
          touchLocation:(CGPoint)touchLocation { }
-
-- (void)collectionView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path { }
 
 #pragma mark - Input toolbar delegate
 

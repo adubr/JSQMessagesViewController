@@ -17,6 +17,10 @@
 //
 
 #import "DemoMessagesViewController.h"
+#import "JSQMessagesViewAccessoryDelegate.h"
+
+@interface DemoMessagesViewController () <JSQMessagesViewAccessoryDelegate>
+@end
 
 @implementation DemoMessagesViewController
 
@@ -44,7 +48,13 @@
      */
     self.demoData = [[DemoModelData alloc] init];
     
-    
+
+    /**
+     *  Set up message accessory button delegate
+     */
+
+    self.collectionView.accessoryDelegate = self;
+
     /**
      *  You can set custom avatar sizes
      */
@@ -678,13 +688,7 @@
     NSLog(@"Tapped cell at %@!", NSStringFromCGPoint(touchLocation));
 }
 
-- (void)collectionView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path
-{
-    NSLog(@"Tapped accessory button!");
-}
-
 #pragma mark - JSQMessagesComposerTextViewPasteDelegate methods
-
 
 - (BOOL)composerTextView:(JSQMessagesComposerTextView *)textView shouldPasteWithSender:(id)sender
 {
@@ -700,6 +704,13 @@
         return NO;
     }
     return YES;
+}
+
+#pragma mark - JSQMessagesViewAccessoryDelegate methods
+
+- (void)messageView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path
+{
+    NSLog(@"Tapped accessory button!");
 }
 
 @end

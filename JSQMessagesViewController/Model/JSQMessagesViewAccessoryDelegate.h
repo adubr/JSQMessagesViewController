@@ -19,11 +19,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class JSQMessagesCollectionView;
+
 /**
-*  The `JSQMessagesCollectionViewAccessoryDelegate` protocol defines methods that allow you to
+*  The `JSQMessagesViewAccessoryDelegate` protocol defines methods that allow you to
 *  handle accessory actions for the collection view.
 */
-@protocol JSQMessagesCollectionViewAccessoryDelegate <NSObject>
+@protocol JSQMessagesViewAccessoryDelegate <NSObject>
 
 @required
 
@@ -33,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param collectionView The collection view object that is notifying the delegate of the tap event.
  *  @param indexPath      The index path of the item for which the accessory button was tapped.
  */
-- (void)collectionView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path;
+- (void)messageView:(JSQMessagesCollectionView *)view didTapAccessoryButtonAtIndexPath:(NSIndexPath *)path;
 
 @end
 

@@ -21,7 +21,6 @@
 #import "JSQMessagesCollectionView.h"
 #import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesInputToolbar.h"
-#import "JSQMessagesCollectionViewAccessoryDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -47,7 +46,6 @@ typedef NS_OPTIONS(NSInteger, JSQMessagesAccessoryButtonMode) {
  */
 @interface JSQMessagesViewController : UIViewController <JSQMessagesCollectionViewDataSource,
                                                          JSQMessagesCollectionViewDelegateFlowLayout,
-                                                         JSQMessagesCollectionViewAccessoryDelegate,
                                                          UITextViewDelegate>
 
 /**

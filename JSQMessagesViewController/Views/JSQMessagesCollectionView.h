@@ -25,7 +25,7 @@
 
 @class JSQMessagesTypingIndicatorFooterView;
 @class JSQMessagesLoadEarlierHeaderView;
-@protocol JSQMessagesCollectionViewAccessoryDelegate;
+@protocol JSQMessagesViewAccessoryDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -49,9 +49,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  The object that handles accessory actions for the collection view.
- *  It must adopt the `JSQMessagesCollectionViewAccessoryDelegate` protocol.
+ *  It must adopt the `JSQMessagesViewAccessoryDelegate` protocol.
  */
-@property (weak, nonatomic, nullable) id<JSQMessagesCollectionViewAccessoryDelegate> accessoryDelegate;
+@property (weak, nonatomic, nullable) id<JSQMessagesViewAccessoryDelegate> accessoryDelegate;
 
 /**
  *  The layout used to organize the collection view’s items.
