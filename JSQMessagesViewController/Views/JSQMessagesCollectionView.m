@@ -18,6 +18,8 @@
 
 #import "JSQMessagesCollectionView.h"
 
+#import "JSQMessagesViewAccessoryButtonDelegate.h"
+
 #import "JSQMessagesCollectionViewCellIncoming.h"
 #import "JSQMessagesCollectionViewCellOutgoing.h"
 
@@ -25,7 +27,6 @@
 #import "JSQMessagesLoadEarlierHeaderView.h"
 
 #import "UIColor+JSQMessages.h"
-#import "JSQMessagesViewAccessoryButtonDelegate.h"
 
 
 @interface JSQMessagesCollectionView () <JSQMessagesLoadEarlierHeaderViewDelegate>

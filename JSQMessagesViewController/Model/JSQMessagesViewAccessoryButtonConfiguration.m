@@ -25,17 +25,22 @@
 
 }
 
-- (instancetype)init
+- (instancetype)initWithMode:(JSQMessagesAccessoryButtonMode)mode image:(UIImage *)image
 {
     self = [super init];
     if (self) {
-        self.mode = JSQMessagesAccessoryButtonModeAlwaysHidden;
-        self.image = [[self class] defaultAccessoryButtonImage];
+        self.mode = mode;
+        self.image = image;
     }
 
     return self;
 }
 
+- (instancetype)init
+{
+    return [self initWithMode:JSQMessagesAccessoryButtonModeAlwaysHidden
+                        image:[[self class] defaultAccessoryButtonImage]];
+}
 
 + (UIImage *)defaultAccessoryButtonImage
 {

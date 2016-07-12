@@ -101,6 +101,7 @@
 - (void)setupMessageAccessoryButton
 {
     self.collectionView.accessoryDelegate = self;
+
     JSQMessagesViewAccessoryButtonConfiguration *accessoryButtonConfiguration
             = [[JSQMessagesViewAccessoryButtonConfiguration alloc] init];
     accessoryButtonConfiguration.mode =

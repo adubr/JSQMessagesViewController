@@ -50,6 +50,14 @@ typedef NS_OPTIONS(NSInteger, JSQMessagesAccessoryButtonMode) {
  */
  @property (strong, nonatomic) UIImage *image;
 
+/**
+ *   Initializes a newly allocated configuration with given parameters
+ *
+ *   @param mode  Specifies the visibility mode
+ *   @param image Specifies an image for the accessory button
+ */
+- (instancetype)initWithMode:(JSQMessagesAccessoryButtonMode)mode image:(UIImage *)image;
+
 @end
 
 NS_ASSUME_NONNULL_END
