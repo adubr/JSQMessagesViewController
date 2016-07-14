@@ -22,8 +22,6 @@
 #import "JSQMessagesCollectionViewFlowLayout.h"
 #import "JSQMessagesInputToolbar.h"
 
-@class JSQMessagesViewAccessoryButtonConfiguration;
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -146,14 +144,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  the top of the collection view in order to see the header.
  */
 @property (assign, nonatomic) BOOL showLoadEarlierMessagesHeader;
-
-/**
- *  Specifies the accessory button configuration.
- *
- *  @discussion You may provide an image for the button and specify the visibility mode.
- *  Changing the configuration won't take effect immediately.
- */
-@property (strong, nonatomic) JSQMessagesViewAccessoryButtonConfiguration *accessoryButtonConfiguration;
 
 /**
  *  Specifies an additional inset amount to be added to the collectionView's contentInsets.top value.

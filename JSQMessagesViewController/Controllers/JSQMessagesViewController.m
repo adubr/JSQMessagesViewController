@@ -23,7 +23,6 @@
 #import "JSQMessageData.h"
 #import "JSQMessageBubbleImageDataSource.h"
 #import "JSQMessageAvatarImageDataSource.h"
-#import "JSQMessagesViewAccessoryButtonConfiguration.h"
 
 #import "JSQMessagesCollectionViewCellIncoming.h"
 #import "JSQMessagesCollectionViewCellOutgoing.h"
@@ -176,8 +175,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.showTypingIndicator = NO;
 
     self.showLoadEarlierMessagesHeader = NO;
-
-    self.accessoryButtonConfiguration = [[JSQMessagesViewAccessoryButtonConfiguration alloc] init];
 
     self.topContentAdditionalInset = 0.0f;
 
@@ -557,9 +554,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
         }
     }
 
-    [cell setAccessoryButtonImage:self.accessoryButtonConfiguration.image];
-    cell.accessoryButton.hidden = [self shouldHideAccessoryButtonInCellWithMediaMessage:isMediaMessage];
-    
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
     cell.cellBottomLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellBottomLabelAtIndexPath:indexPath];
@@ -581,13 +575,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     [self collectionView:collectionView accessibilityForCell:cell indexPath:indexPath message:messageItem];
 
     return cell;
-}
-
-- (BOOL)shouldHideAccessoryButtonInCellWithMediaMessage:(BOOL)isMediaMessage
-{
-    JSQMessagesAccessoryButtonMode mask =
-            isMediaMessage ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeVisibleForTextMessages;
-    return self.accessoryButtonConfiguration.mode & mask ? NO : YES;
 }
 
 - (void)collectionView:(JSQMessagesCollectionView *)collectionView

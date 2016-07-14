@@ -18,7 +18,6 @@
 
 #import "DemoMessagesViewController.h"
 #import "JSQMessagesViewAccessoryButtonDelegate.h"
-#import "JSQMessagesViewAccessoryButtonConfiguration.h"
 
 @interface DemoMessagesViewController () <JSQMessagesViewAccessoryButtonDelegate>
 @end
@@ -53,7 +52,7 @@
     /**
      *  Set up message accessory button delegate and configuration
      */
-    [self setupMessageAccessoryButton];
+    self.collectionView.accessoryDelegate = self;
 
     /**
      *  You can set custom avatar sizes
@@ -96,17 +95,6 @@
      *
      *  self.inputToolbar.maximumHeight = 150;
      */
-}
-
-- (void)setupMessageAccessoryButton
-{
-    self.collectionView.accessoryDelegate = self;
-
-    JSQMessagesViewAccessoryButtonConfiguration *accessoryButtonConfiguration
-            = [[JSQMessagesViewAccessoryButtonConfiguration alloc] init];
-    accessoryButtonConfiguration.mode =
-            [NSUserDefaults accessoryButtonForMediaMessages] ? JSQMessagesAccessoryButtonModeVisibleForMediaMessages : JSQMessagesAccessoryButtonModeAlwaysHidden;
-    self.accessoryButtonConfiguration = accessoryButtonConfiguration;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -582,10 +570,16 @@
         cell.textView.linkTextAttributes = @{ NSForegroundColorAttributeName : cell.textView.textColor,
                                               NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternSolid) };
     }
+
+    cell.accessoryButton.hidden = ![self shouldShowAccessoryButtonForMessage:msg];
     
     return cell;
 }
 
+- (BOOL)shouldShowAccessoryButtonForMessage:(id<JSQMessageData>)message
+{
+    return ([message isMediaMessage] && [NSUserDefaults accessoryButtonForMediaMessages]);
+}
 
 
 #pragma mark - UICollectionView Delegate
